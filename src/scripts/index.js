@@ -3,7 +3,7 @@ import reactDom from 'react-dom';
 import '../styles/main.css';
 
 // Components
-import CreateTask from './components/createTask.js'
+import CreateTask from './components/Tasks/createTask.js'
 
 class App extends Component {
 	constructor(props) {

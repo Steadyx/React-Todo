@@ -16,26 +16,20 @@ class CreateTask extends Component {
 	}
 
 	renderText(text) {
-		this.setState({ term: text.target.value });
+		this.setState({ term: text.target.value});
 	}
 	handleEnter(event) {
 		const key = event.keyCode || event.charCode;
 		const listItem = this.state.isListed;
-		if (key === 13) {
+		if (key === 13 ) {
 			listItem.push(this.state.term);
 			this.setState({
 				isEntered: true,
-				isListed: listItem
-			});
-		} else if (key === 8) {
-			this.setState({
-				isEntered: false
-			});
-		} else {
-			this.setState({
-				isEntered: false
+				isListed: listItem,
+				term: ''
 			});
 		}
+
 		console.log(this.state.isEntered);
 	}
 	render() {

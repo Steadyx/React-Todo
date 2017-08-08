@@ -5,17 +5,22 @@ class Checked extends Component {
 		super(props);
 
 		this.state = {
-			checked: null
+			isChecked: null
 		};
 		this.isCompleted = this.isCompleted.bind(this);
 	}
 
 	isCompleted(event) {
-		if (event.target.clicked) {
+		if(event.target) {
 			this.setState({
-				checked: true
-			});
-		}
+				isChecked: true
+			})
+		}else {
+		this.setState({
+			isChecked: false
+		})
+	}
+		console.log(this.state.isChecked);
 	}
 
 	render() {

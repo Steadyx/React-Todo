@@ -1,13 +1,13 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import reactDom from 'react-dom';
 import '../styles/main.css';
 
 // Components
-import CreateTask from './components/Tasks/createTask.js'
+import CreateTask from './components/Tasks/createTask.js';
 
 class App extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
 	}
 
 	render() {
@@ -15,9 +15,8 @@ class App extends Component {
 			<div>
 				<CreateTask />
 			</div>
-		)
+		);
 	}
 }
 
-reactDom.render(
-	<App/>, document.querySelector('.container'))
+reactDom.render(<App />, document.querySelector('.container'));

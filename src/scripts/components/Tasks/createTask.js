@@ -11,17 +11,23 @@ class CreateTask extends Component {
 			isEntered: false,
 			isListed: []
 		};
+
 		this.renderText = this.renderText.bind(this);
 		this.handleEnter = this.handleEnter.bind(this);
 	}
 
 	renderText(text) {
-		this.setState({ term: text.target.value});
+		this.setState({ term: text.target.value });
 	}
+
 	handleEnter(event) {
 		const key = event.keyCode || event.charCode;
 		const listItem = this.state.isListed;
-		if (key === 13 ) {
+		const emptyString = new RegExp(/^\s*$/, 'g');
+		console.log(listItem);
+		if (this.state.term.match(emptyString)) {
+			console.log('blocked');
+		} else if (key === 13) {
 			listItem.push(this.state.term);
 			this.setState({
 				isEntered: true,
@@ -29,7 +35,6 @@ class CreateTask extends Component {
 				term: ''
 			});
 		}
-
 		console.log(this.state.isEntered);
 	}
 	render() {

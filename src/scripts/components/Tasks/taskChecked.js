@@ -1,30 +1,34 @@
 import React, { Component } from 'react';
+import Completed from './taskCompleted';
 
 class Checked extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			isChecked: null
-		};
-		this.isCompleted = this.isCompleted.bind(this);
-	}
-
-	isCompleted(event) {
-		if(event.target) {
-			this.setState({
-				isChecked: true
-			})
-		}else {
-		this.setState({
 			isChecked: false
-		})
-	}
-		console.log(this.state.isChecked);
+		};
+		this.componentChecked = this.componentChecked.bind(this);
+		this.populateCompleted = this.populateCompleted.bind(this);
 	}
 
+	componentChecked(event) {
+		const target = event.target;
+		const value = target.type === 'checkbox' ? target.checked : target.value;
+		if (value) {
+			this.setState({
+				isChecked: value
+			});
+			console.log('checked');
+		}
+	}
+	populateCompleted() {}
 	render() {
-		return <input type="checkbox" onChange={this.isCompleted} />;
+		return (
+			<div>
+				<input type="checkbox" onChange={this.componentChecked} />
+			</div>
+		);
 	}
 }
 

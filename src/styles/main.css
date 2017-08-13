@@ -48,6 +48,10 @@ form {
 	margin-top: 10px;
 }
 
+.hide {
+	display: none;
+}
+
 .form-flex {
 	display: flex;
 	flex-direction: column;
@@ -68,7 +72,6 @@ form {
 	border: 1px solid black;
 	justify-content: flex-start;
 	align-items: center;
-	width: 75%;
 	margin: 10px 0;
 	flex: 1;
 }

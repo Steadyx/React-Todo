@@ -5,13 +5,11 @@ import TaskItem from './taskItem';
 class CreateTask extends Component {
 	constructor(props) {
 		super(props);
-
 		this.state = {
 			term: '',
 			isEntered: false,
 			isListed: []
 		};
-
 		this.renderText = this.renderText.bind(this);
 		this.handleEnter = this.handleEnter.bind(this);
 	}
@@ -24,7 +22,6 @@ class CreateTask extends Component {
 		const key = event.keyCode || event.charCode;
 		const listItem = this.state.isListed;
 		const emptyString = new RegExp(/^\s*$/, 'g');
-		console.log(listItem);
 		if (this.state.term.match(emptyString)) {
 			console.log('blocked');
 		} else if (key === 13) {
@@ -35,7 +32,6 @@ class CreateTask extends Component {
 				term: ''
 			});
 		}
-		console.log(this.state.isEntered);
 	}
 	render() {
 		return (
@@ -50,11 +46,13 @@ class CreateTask extends Component {
 							placeholder="Please Write some things down"
 						/>
 					</div>
-					<TaskItem
-						getValue={this.state.term}
-						checkEntered={this.state.isEntered}
-						createItemList={this.state.isListed}
-					/>
+					<div>
+						<TaskItem
+							getValue={this.state.term}
+							checkEntered={this.state.isEntered}
+							createItemList={this.state.isListed}
+						/>
+					</div>
 				</form>
 			</div>
 		);

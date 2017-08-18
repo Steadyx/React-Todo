@@ -13,30 +13,36 @@ class TaskItem extends Component {
     this.createIndex = this.createIndex.bind(this);
   }
 
+  createIndex(event) {
+    let newIndex = parseInt(event.target.getAttribute("data-index"));
+    let newStateIndex = (this.state.indexValue = newIndex);
+    this.setState(prevState => {
+      return { indexValue: newStateIndex };
+    });
+    console.log("the value index value is", this.state.indexValue);
+  }
+
   componentChecked(event) {
-    const target = event.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
-    this.setState({
-      isChecked: value
+    let target = event.target;
+    let value = target.type === "checkbox" ? target.checked : target.value;
+    this.setState(prevState => {
+      return { isChecked: (prevState.isChecked = value) };
     });
     console.log(this.state.isChecked);
   }
-  createIndex(event) {
-    this.setState({
-      indexValue: parseInt(event.target.id)
-    });
-    console.log(this.state.indexValue);
-  }
+
   render() {
-    const checklistItems = this.props.createItemList.map((values, index) => {
+    const { isChecked } = this.state;
+
+    let checklistItems = this.props.createItemList.map((values, index) => {
       return (
-        <div className="check-list-row" key={index} id={index}>
+        <div className="check-list-row" key={index}>
           <input
             type="checkbox"
-            onChange={this.componentChecked}
-            value={this.state.isChecked}
             onClick={this.createIndex}
-            id={index}
+            onChange={this.componentChecked}
+            value={isChecked}
+            data-index={index}
           />
           <div>
             {values}
@@ -51,7 +57,7 @@ class TaskItem extends Component {
           {checklistItems}
         </div>
         <Completed
-          isTaskChecked={this.state.isChecked}
+          isTaskChecked={isChecked}
           arrayItems={this.props.createItemList}
           indexValue={this.state.indexValue}
         />
